@@ -30,7 +30,7 @@ def dfs(x, y, k):
             dfs(new_x, new_y, k)
 
 
-minK = 0
+minK = 1
 maxK = max(max(villages))
 
 safeAreaOnK = [0 for _ in range(minK, maxK+1)]
@@ -44,8 +44,6 @@ for k in range(minK, maxK+1):
                 safeAreaOnK[k] += 1
                 visited[i][j] = True
                 dfs(i,j,k)
-
-safeAreaOnK.remove(safeAreaOnK[0])
 # print(safeAreaOnK)
 maxIdx = 0
 maxVal = 0
@@ -53,4 +51,4 @@ for i in range(len(safeAreaOnK)):
     if maxVal < safeAreaOnK[i]:
         maxVal = safeAreaOnK[i]
         maxIdx = i
-print(maxIdx+1, maxVal)
+print(maxIdx, maxVal)
