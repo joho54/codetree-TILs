@@ -19,7 +19,7 @@ def dfs(vertex):
 
 def dfs_byAdjacancyList(vertex):
     global ans
-    for curr_v in range(1, n+1):
+    for curr_v in adjacancyList[vertex]:
         if not visited[curr_v]:
             visited[curr_v] = True
             ans += 1
@@ -33,8 +33,8 @@ for x, y in edges:
     graph[x][y] = 1
     graph[y][x] = 1
 for x, y in edges:
-    graph[x].append(y)
-    graph[y].append(x)
+    adjacancyList[x].append(y)
+    adjacancyList[y].append(x)
 # for g in graph:
 #     print(g)
 root = 1
