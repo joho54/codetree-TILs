@@ -1,7 +1,7 @@
 #인접 행렬 사용
 n, m = tuple(map(int, input().split()))
 edges = [
-    tuple(map(int, input().split()))
+    sorted(tuple(map(int, input().split())))
     for _ in range(m)
 ]
 
@@ -20,6 +20,8 @@ def dfs(vertex):
 graph = [[0 for _ in range(n+1)] for _ in range(n+1)]
 for x, y in edges:
     graph[x][y] = 1
+# for g in graph:
+#     print(g)
 root = 1
 dfs(root)
 print(ans)
