@@ -1,4 +1,8 @@
 #canGo = in range, heightSafe, not visited, 
+import sys
+sys.setrecursionlimit(1000)
+
+# 원래 코드 
 
 #input
 n, m = tuple(map(int, input().split()))
