@@ -1,6 +1,6 @@
 #canGo = in range, heightSafe, not visited, 
 import sys
-sys.setrecursionlimit(1000000000)
+sys.setrecursionlimit(10000000)
 
 # 원래 코드 
 
