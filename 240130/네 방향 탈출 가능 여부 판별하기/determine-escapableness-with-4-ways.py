@@ -22,7 +22,7 @@ def push(x, y):
     q.append([x,y])
 
 def inRange(x, y):
-    return x >= 0 and x < m and y >= 0 and y < n
+    return x >= 0 and x < n and y >= 0 and y < m
 
 
 found = False
