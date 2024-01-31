@@ -31,6 +31,7 @@ def canGo(x, y, keyVal):
 def bfs(keyVal,currR,currC):
     dxs = [1, 0, 0, -1] # down, right, left, up
     dys = [0, 1, -1, 0]
+    
     isMoved = False
     currP = [currR, currC]  #val, x, y
     maxVal = 0
