@@ -31,18 +31,23 @@ def canGo(x, y, keyVal):
 def bfs(keyVal,currR,currC):
     dxs = [1, 0, 0, -1] # down, right, left, up
     dys = [0, 1, -1, 0]
-    currP = [grid[currR][currC],currR,currC]  #val, x, y
+    isMoved = False
+    currP = [currR, currC]  #val, x, y
+    maxVal = 0
     while q:
         x, y = q.popleft()
         for dx, dy in zip(dxs, dys):
             new_x, new_y = x+dx, y+dy
             if canGo(new_x, new_y, keyVal):
-                if currP[0] <= grid[new_x][new_y]:
-                    currP = [grid[new_x][new_y], new_x, new_y]
+                if maxVal <= grid[new_x][new_y]:
+                    maxVal = grid[new_x][new_y]
+                    isMoved = True
+                    currP = [new_x, new_y]
                     # print(currP)
                 # print(new_x, new_y)
                 push(new_x, new_y)
-    return currP
+    # print('currP', currP)
+    return [isMoved, currP]
 
 
 
@@ -54,8 +59,8 @@ for _ in range(k):
     visited = [[False for _ in range(n)] for _ in range(n)]
     push(r,c)
     keyVal = grid[r][c]
-    v, r, c = bfs(keyVal, r, c)
-    if v == -1:
+    isMoved, [r, c] = bfs(keyVal, r, c)
+    if not isMoved:
         break
 
 print(r+1, c+1)
