@@ -31,7 +31,7 @@ def canGo(x, y, keyVal):
 def bfs(keyVal,currR,currC):
     dxs = [1, 0, 0, -1] # down, right, left, up
     dys = [0, 1, -1, 0]
-    
+
     isMoved = False
     currP = [currR, currC]  #val, x, y
     maxVal = 0
@@ -40,7 +40,17 @@ def bfs(keyVal,currR,currC):
         for dx, dy in zip(dxs, dys):
             new_x, new_y = x+dx, y+dy
             if canGo(new_x, new_y, keyVal):
-                if maxVal <= grid[new_x][new_y]:
+                if maxVal < grid[new_x][new_y]: #if next grid value is bigger, just change
+                    maxVal = grid[new_x][new_y]
+                    isMoved = True
+                    currP = [new_x, new_y]
+                    # print(currP)
+                elif maxVal == grid[new_x][new_y] and currP[0] > new_x: #if same, choose upper one
+                    maxVal = grid[new_x][new_y]
+                    isMoved = True
+                    currP = [new_x, new_y]
+                    # print(currP)
+                elif maxVal == grid[new_x][new_y] and currP[0] == new_x and currP[1] > new_y:
                     maxVal = grid[new_x][new_y]
                     isMoved = True
                     currP = [new_x, new_y]
