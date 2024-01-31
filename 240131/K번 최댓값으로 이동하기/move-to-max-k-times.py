@@ -28,10 +28,10 @@ def canGo(x, y, keyVal):
     return False
     
 # x is key val
-def bfs(keyVal):
+def bfs(keyVal,currR,currC):
     dxs = [1, 0, 0, -1] # down, right, left, up
     dys = [0, 1, -1, 0]
-    currP = [-1,-1,-1]  #val, x, y
+    currP = [grid[currR][currC],currR,currC]  #val, x, y
     while q:
         x, y = q.popleft()
         for dx, dy in zip(dxs, dys):
@@ -54,7 +54,7 @@ for _ in range(k):
     visited = [[False for _ in range(n)] for _ in range(n)]
     push(r,c)
     keyVal = grid[r][c]
-    v, r, c = bfs(keyVal)
+    v, r, c = bfs(keyVal, r, c)
     if v == -1:
         break
 
