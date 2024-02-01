@@ -11,8 +11,8 @@ q = deque()
 # i realized how to set visited
 
 N = int(input())
-visited = [False for _ in range(N+4)]
-step = [0 for _ in range(N+4)]
+visited = [False for _ in range(N+3)]
+step = [0 for _ in range(N+3)]
 
 def canGo(n, dx): 
     if n < N+2 and not visited[n] and n >= 1:
@@ -23,7 +23,7 @@ def operate(n, dx):
     if dx == 2 or dx == 3:
         if n%dx == 0:
             return n//dx
-        else: n
+        else: return n
     return n+dx
 
 
