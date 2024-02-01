@@ -38,13 +38,13 @@ def push(x,y, s):
 def inRange(x, y):
     return x >= 0 and x < n and y >= 0 and y < n
 
-def canGo(x, y, simGrid):
+def canGo(x, y):
     global visited
-    if inRange(x, y) and not visited[x][y] and simGrid[x][y] != 1: 
+    if inRange(x, y) and not visited[x][y] and grid[x][y] != 1: 
         return True
     return False
 
-def bfs(simGrid):
+def bfs():
     global visited, step, stepVal, minStepVal
     dxs = [-1,1,0,0]
     dys = [0,0,1,-1]
@@ -63,7 +63,7 @@ def bfs(simGrid):
             break
         for dx, dy in zip(dxs, dys):
             new_x, new_y = x+dx, y+dy
-            if canGo(new_x,new_y, simGrid):
+            if canGo(new_x,new_y):
                 visited[new_x][new_y] = True
                 push(new_x, new_y, step[x][y]+1)
                 # print(new_x, new_y)
@@ -74,32 +74,32 @@ def gridOutput(grid):
 q = deque()
 step = [[0 for _ in range(n)]for _ in range(n)]
 stepVal, minStepVal = 0, INT_MAX
-def recurSearch(idx, removedWallList):
+def recurSearch(idx, cnt):
     global stepVal, minStepVal, visited, step
 
     #base condition
-    if len(removedWallList) == k:
+    if cnt == k:
         #sim
-        simGrid = copy.deepcopy(grid)
+
         visited = [[False for _ in range(n)]for _ in range(n)]
         step = [[0 for _ in range(n)]for _ in range(n)]
         #removed wall
-        for x, y in removedWallList:
-            simGrid[x][y] = 0
+
         #gridOutput(simGrid)
         push(r1, c1,0)
         #bfs
-        bfs(simGrid)
+        bfs()
         
 
     #recursion
     #idx is preveiously chosen i
-    for i in range(idx+1, len(wallList)):
-        removedWallList.append(wallList[i])
-        recurSearch(i, removedWallList)
-        removedWallList.pop()
+    for i in range(idx, len(wallList)):
+        x, y = wallList[i]
+        grid[x][y] = 0
+        recurSearch(i+1, cnt+1)
+        grid[x][y] = 1
 
-recurSearch(-1, [])
+recurSearch(0, 0)
 
 if minStepVal == INT_MAX:
     print(-1)
