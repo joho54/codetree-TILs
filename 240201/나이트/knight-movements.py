@@ -26,9 +26,10 @@ def canGo(x, y):
     if inRange(x, y) and not visited[x][y]: 
         return True
     return False
-
+found = False
 
 def bfs():
+    global found
     dxs = [-1, -2, -2, -1, 1, 2, 2, 1]
     dys = [-2, -1, 1, 2, 2, 1, -1, -2]
     
@@ -39,10 +40,12 @@ def bfs():
             if canGo(new_x,new_y):
                 visited[new_x][new_y] = True
                 push(new_x, new_y, step[x][y]+1)
+                if new_x == r2 and new_y == c2:
+                    found = True
 
 push(r1,c1, 0)
 bfs()
 
-if step[r2][c2] == 0:
+if not found:
     print(-1)
 else: print(step[r2][c2])
