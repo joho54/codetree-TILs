@@ -1,7 +1,3 @@
-import sys
-
-sys.setrecursionlimit(500000)
-
 n = int(input())
 
 memo = [-1 for _ in range(n+1)]
@@ -24,4 +20,5 @@ def recur(level):
     return memo[level]
 
 ans = recur(n)
+print(memo)
 print(ans%10007)
