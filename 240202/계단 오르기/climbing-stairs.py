@@ -1,6 +1,6 @@
 import sys
 
-sys.setrecursionlimit(1000000)
+sys.setrecursionlimit(500000)
 
 n = int(input())
 
