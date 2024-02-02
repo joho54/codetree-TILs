@@ -11,14 +11,15 @@ def recur(level):
         
     #base condition
     if level == 0 or level == 1:
+        memo[level] = 0
         return 0
     elif level == 2 or level == 3:
+        memo[level] = 1
         return 1
         
-    memo[level] = recur(n-2) + recur(n-3)
+    memo[level] = recur(level-2) + recur(level-3)
     
     return memo[level]
 
 ans = recur(n)
-print(memo)
 print(ans%10007)
