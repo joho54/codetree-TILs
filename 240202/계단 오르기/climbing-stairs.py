@@ -6,7 +6,6 @@ memo = [-1 for _ in range(n+1)]
 def recur(level):
     #memoization
     if memo[level] != -1:
-        print('memo catched')
         return memo[level]
         
     #base condition
