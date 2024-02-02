@@ -1,3 +1,7 @@
+import sys
+
+sys.setrecursionlimit(10000)
+
 n = int(input())
 
 memo = [-1 for _ in range(n+1)]
