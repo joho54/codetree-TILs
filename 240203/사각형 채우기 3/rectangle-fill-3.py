@@ -16,5 +16,5 @@ def func(n):
         dp[k] = 2*dp[k-1] + 3*dp[k-2] + tmp
 
     return dp[n]
-print(func(n))
+print(func(n)%1000000007)
 # print(dp)
