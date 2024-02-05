@@ -6,9 +6,10 @@ arr = [
 ]
 
 arrOneDimen = []
-for a in arr:
-    for aa in a:
-        arrOneDimen.append(aa)
+for i in range(n):
+    for j in range(n):
+        if not arr[i][j] in arrOneDimen:
+            arrOneDimen.append(arr[i][j])
 arrOneDimen.sort()
 
 dp = [[-1 for _ in range(n)]for _ in range(n)]
