@@ -11,7 +11,6 @@ dp[0][0] = [0, arr[0][0], arr[0][0]]
 
 #set dp
 
-
 #vertical
 for i in range(1, n):
     minValTmp = dp[i-1][0][1]
@@ -47,8 +46,19 @@ for i in range(1, n):
     for j in range(1, n):
         val1, minVal1, maxVal1 = calc(dp[i-1][j], arr[i][j])
         val2, minVal2, maxVal2 = calc(dp[i][j-1], arr[i][j])
-        dp[i][j] = min([val1, minVal1, maxVal1],[val2, minVal2, maxVal2])
-
+        
+        if val1 < val2:
+            dp[i][j] = [val1, minVal1, maxVal1]
+        elif val1 > val2:
+            dp[i][j] = [val2, minVal2, maxVal2]
+        else:
+            avgVal1 = (maxVal1 + minVal1)//2
+            avgVal2 = (maxVal2 + minVal2)//2
+            if abs(avgVal1-arr[i][j]) < abs(avgVal2-arr[i][j]):
+                dp[i][j] = [val1, minVal1, maxVal1]
+            else:
+                dp[i][j] = [val2, minVal2, maxVal2]
+            
 # for e in dp:
 #     print(e)
 
