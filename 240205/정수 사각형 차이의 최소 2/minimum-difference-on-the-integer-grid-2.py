@@ -1,76 +1,73 @@
-#input
+import sys
+
+INT_MAX = sys.maxsize
+MAX_R = 100
+
+# 변수 선언 및 입력:
 n = int(input())
-arr = [
-    tuple(map(int, input().split()))
+num = [
+    list(map(int, input().split()))
+    for _ in range(n)
+]
+dp = [
+    [0] * n
     for _ in range(n)
 ]
 
-dp = [[[0, 0, 0] for _ in range(n)] for _ in range(n)]
-#start point: 0, 0
-dp[0][0] = [0, arr[0][0], arr[0][0]]
+ans = INT_MAX
 
-#set dp
+def initialize():
+    # 전부 INT_MAX로 초기화합니다.
+    for i in range(n):
+        for j in range(n):
+            dp[i][j] = INT_MAX
 
-#vertical
-for i in range(1, n):
-    minValTmp = dp[i-1][0][1]
-    maxValTmp = dp[i-1][0][2]
-    if minValTmp > arr[i][0]:
-        minValTmp = arr[i][0]
-    if maxValTmp < arr[i][0]:
-        maxValTmp = arr[i][0]
-    ansVal = maxValTmp - minValTmp
-    dp[i][0] = [ansVal, minValTmp, maxValTmp] 
+    # 시작점의 경우 dp[0][0] = num[0][0]으로 초기값을 설정해줍니다
+    dp[0][0] = num[0][0]
 
-#horizontal
-for j in range(1, n):
-    minValTmp = dp[0][j-1][1]
-    maxValTmp = dp[0][j-1][2]
-    if minValTmp > arr[0][j]:
-        minValTmp = arr[0][j]
-    if maxValTmp < arr[0][j]:
-        maxValTmp = arr[0][j]
-    ansVal = maxValTmp - minValTmp
-    dp[0][j] = [ansVal, minValTmp, maxValTmp] 
+    # 최좌측 열의 초기값을 설정해줍니다.
+    for i in range(1, n):
+        dp[i][0] = max(dp[i - 1][0], num[i][0])
 
-
-def calc(ls, val):
-    v, minVal, maxVal = ls
-    #update min, max
-    if minVal > val: minVal = val
-    if maxVal < val: maxVal = val
-    return (maxVal - minVal, minVal, maxVal)
-
-
-for i in range(1, n):
+    # 최상단 행의 초기값을 설정해줍니다.
     for j in range(1, n):
-        val1, minVal1, maxVal1 = calc(dp[i-1][j], arr[i][j])
-        val2, minVal2, maxVal2 = calc(dp[i][j-1], arr[i][j])
+        dp[0][j] = max(dp[0][j - 1], num[0][j])
+
+
+def solve(lower_bound):
+    # lower_bound 미만의 값은 사용할 수 없도록
+    # num값을 변경해줍니다.
+    for i in range(n):
+        for j in range(n):
+            if num[i][j] < lower_bound:
+                num[i][j] = INT_MAX
+    
+    # DP 초기값 설정
+    initialize()
+
+    # 탐색하는 위치의 위에 값과 좌측 값 중에 작은 값과
+    # 해당 위치의 숫자 중에 최댓값을 구해줍니다.
+    for i in range(1, n):
+        for j in range(1, n):
+            dp[i][j] = max(min(dp[i - 1][j], dp[i][j - 1]), num[i][j])
         
+    return dp[n - 1][n - 1]
 
-        if val1 < val2:
-            dp[i][j] = [val1, minVal1, maxVal1]
-        elif val1 > val2:
-            dp[i][j] = [val2, minVal2, maxVal2]
-        else: #여기에 뭔 함수를 넣어야 할지 결정해야 함.
-            if arr[i][j] in (minVal1, maxVal1):
-                dp[i][j] = [val1, minVal1, maxVal1]
-            elif arr[i][j] in (minVal2, maxVal2):
-                dp[i][j] = [val2, minVal2, maxVal2]
-            else: dp[i][j] = [val2, minVal2, maxVal2]
-            
-# for e in dp:
-#     print(e)
+   
+# 최솟값을 k라고 가정했을 때
+# lower_bound 이상의 수들만 사용하여 
+# 이동한다는 조건하에서
+# 최댓값을 최소로 만드는 DP 문제를 풀어줍니다.
+for lower_bound in range(1, MAX_R + 1):
+    upper_bound = solve(lower_bound)
+    
+    # 다 진행했음에도 여전히 INT_MAX라면 
+    # 그러한 이동이 불가능하다는 뜻이므로
+    # 패스합니다.
+    if upper_bound == INT_MAX:
+        continue
+    
+    # 답을 갱신합니다.
+    ans = min(ans, upper_bound - lower_bound)
 
-
-print(dp[n-1][n-1][0])
-[[0, 15, 15], [2, 13, 15], [4, 13, 17], [4, 13, 17]]
-[[3, 12, 15], [4, 13, 17], [16, 1, 17], [16, 1, 17]]
-[[3, 12, 15], [4, 13, 17], [16, 1, 17], [16, 1, 17]]
-[[8, 12, 20], [11, 6, 17], [11, 6, 17], [11, 6, 17]]
-11
-[[0, 15, 15], [2, 13, 15], [4, 13, 17], [4, 13, 17]]
-[[3, 12, 15], [4, 13, 17], [16, 1, 17], [16, 1, 17]]
-[[3, 12, 15], [4, 12, 16], [15, 1, 16], [15, 1, 16]]
-[[8, 12, 20], [10, 6, 16], [10, 6, 16], [10, 6, 16]]
-10
+print(ans)
