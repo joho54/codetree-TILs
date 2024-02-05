@@ -16,7 +16,7 @@ for i in range(n):
 arrDetailed.sort()
 
 
-dp = [[-1 for _ in range(n)]for _ in range(n)]
+dp = [[1 for _ in range(n)]for _ in range(n)]
 
 dxs = [-1, 0, 1, 0]
 dys = [0, -1, 0, 1]
@@ -31,13 +31,9 @@ for details in arrDetailed:
     dps = []
     for dx, dy in zip(dxs, dys):
         new_i, new_j = i+dx, j+dy
-        if inRange(new_i, new_j) and arr[new_i][new_j] < arr[i][j]:
-            tmp = dp[new_i][new_j] 
-            dps.append(tmp)
+        if inRange(new_i, new_j) and arr[new_i][new_j] > arr[i][j]:
+            dp[new_i][new_j] = max(dp[new_i][new_j], dp[i][j]+1)
+            
     #if we have smaller neighbor 
-    if len(dps) > 0:
-        dp[i][j] = max(dps)+1
-    #otherwise
-    else: dp[i][j] = 1
                 
 print(max(max(dp)))
