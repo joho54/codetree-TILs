@@ -58,9 +58,12 @@ for i in range(1, n):
                 #1st is upper
                 if max(minVal1, minVal2) > arr[i][j]:
                     dp[i][j] = [val2, minVal2, maxVal2]
-            else:
+                
+            elif minVal1 < minVal2:
                 if min(maxVal1, maxVal2) > arr[i][j]:
-                    dp[i][j] = [val2, minVal2, maxVal2]
+                    dp[i][j] = [val1, minVal1, maxVal1]
+            else:
+                dp[i][j] = [val1, minVal1, maxVal1]
             
 # for e in dp:
 #     print(e)
