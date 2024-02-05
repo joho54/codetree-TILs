@@ -52,12 +52,15 @@ for i in range(1, n):
         elif val1 > val2:
             dp[i][j] = [val2, minVal2, maxVal2]
         else:
-            avgVal1 = (maxVal1 + minVal1)//2
-            avgVal2 = (maxVal2 + minVal2)//2
-            if abs(avgVal1-arr[i][j]) < abs(avgVal2-arr[i][j]):
-                dp[i][j] = [val1, minVal1, maxVal1]
+            #max of mins
+            #we can now which is upper level
+            if minVal1 > minVal2:
+                #1st is upper
+                if max(minVal1, minVal2) > arr[i][j]:
+                    dp[i][j] = [val2, minVal2, maxVal2]
             else:
-                dp[i][j] = [val2, minVal2, maxVal2]
+                if min(maxVal1, maxVal2) > arr[i][j]:
+                    dp[i][j] = [val2, minVal2, maxVal2]
             
 # for e in dp:
 #     print(e)
