@@ -17,7 +17,7 @@ def inRange(x,y):
     return x >= 0 and x < n and y >= 0 and y < n
 
 minVal, maxVal = min(min(arr)), max(max(arr))
-print(minVal, maxVal)
+
 #dp
 for val in range(minVal, maxVal+1):
     for i in range(n):
