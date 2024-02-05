@@ -5,6 +5,12 @@ arr = [
     for _ in range(n)
 ]
 
+arrOneDimen = []
+for a in arr:
+    for aa in a:
+        arrOneDimen.append(aa)
+arrOneDimen.sort()
+
 dp = [[-1 for _ in range(n)]for _ in range(n)]
 
 dxs = [-1, 0, 1, 0]
@@ -13,15 +19,11 @@ dys = [0, -1, 0, 1]
 def inRange(x,y):
     return x >= 0 and x < n and y >= 0 and y < n
 
-minVal, maxVal = min(min(arr)), max(max(arr))
-
 #dp
-for val in range(minVal, maxVal+1):
+for val in arrOneDimen:
     for i in range(n):
         for j in range(n):
-            if dp[i][j] != -1:
-                continue
-            elif arr[i][j] == val:
+            if arr[i][j] == val:
                 dps = []
                 for dx, dy in zip(dxs, dys):
                     new_i, new_j = i+dx, j+dy
@@ -33,4 +35,5 @@ for val in range(minVal, maxVal+1):
                     dp[i][j] = max(dps)+1
                 #otherwise
                 else: dp[i][j] = 1
+                
 print(max(max(dp)))
