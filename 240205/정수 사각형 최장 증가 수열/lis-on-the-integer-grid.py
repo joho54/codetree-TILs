@@ -33,8 +33,8 @@ for details in arrDetailed:
             dp[new_i][new_j] = max(dp[new_i][new_j], dp[i][j]+1)
             
     #if we have smaller neighbor 
-# for i in range(n):
-#     for j in range(n):
-#         ans = max(ans, dp[i][j])
+for i in range(n):
+    for j in range(n):
+        ans = max(ans, dp[i][j])
 
-print(max(max(dp)))
+print(ans)
