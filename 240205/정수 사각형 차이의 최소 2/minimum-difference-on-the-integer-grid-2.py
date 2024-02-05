@@ -47,26 +47,30 @@ for i in range(1, n):
         val1, minVal1, maxVal1 = calc(dp[i-1][j], arr[i][j])
         val2, minVal2, maxVal2 = calc(dp[i][j-1], arr[i][j])
         
+
         if val1 < val2:
             dp[i][j] = [val1, minVal1, maxVal1]
         elif val1 > val2:
             dp[i][j] = [val2, minVal2, maxVal2]
-        else:
-            #max of mins
-            #we can now which is upper level
-            if minVal1 > minVal2:
-                #1st is upper
-                if max(minVal1, minVal2) > arr[i][j]:
-                    dp[i][j] = [val2, minVal2, maxVal2]
-                
-            elif minVal1 < minVal2:
-                if min(maxVal1, maxVal2) > arr[i][j]:
-                    dp[i][j] = [val1, minVal1, maxVal1]
-            else:
+        else: #여기에 뭔 함수를 넣어야 할지 결정해야 함.
+            if arr[i][j] in (minVal1, maxVal1):
                 dp[i][j] = [val1, minVal1, maxVal1]
+            elif arr[i][j] in (minVal2, maxVal2):
+                dp[i][j] = [val2, minVal2, maxVal2]
+            else: dp[i][j] = [val2, minVal2, maxVal2]
             
 # for e in dp:
 #     print(e)
 
 
 print(dp[n-1][n-1][0])
+[[0, 15, 15], [2, 13, 15], [4, 13, 17], [4, 13, 17]]
+[[3, 12, 15], [4, 13, 17], [16, 1, 17], [16, 1, 17]]
+[[3, 12, 15], [4, 13, 17], [16, 1, 17], [16, 1, 17]]
+[[8, 12, 20], [11, 6, 17], [11, 6, 17], [11, 6, 17]]
+11
+[[0, 15, 15], [2, 13, 15], [4, 13, 17], [4, 13, 17]]
+[[3, 12, 15], [4, 13, 17], [16, 1, 17], [16, 1, 17]]
+[[3, 12, 15], [4, 12, 16], [15, 1, 16], [15, 1, 16]]
+[[8, 12, 20], [10, 6, 16], [10, 6, 16], [10, 6, 16]]
+10
