@@ -1,6 +1,3 @@
-import sys
-MIN_INT = -sys.maxsize
-
 #input
 n = int(input())
 arr = [
@@ -22,7 +19,9 @@ minVal, maxVal = min(min(arr)), max(max(arr))
 for val in range(minVal, maxVal+1):
     for i in range(n):
         for j in range(n):
-            if arr[i][j] == val:
+            if dp[i][j] != -1:
+                continue
+            elif arr[i][j] == val:
                 dps = []
                 for dx, dy in zip(dxs, dys):
                     new_i, new_j = i+dx, j+dy
