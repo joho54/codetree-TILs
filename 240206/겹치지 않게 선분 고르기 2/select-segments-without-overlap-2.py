@@ -14,4 +14,4 @@ for i in range(n):
         if lines[j][1] < lines[i][0]:
             dp[i] = max(dp[j]+1, dp[i])
 
-print(max(dp))
+print(dp[n-1])
