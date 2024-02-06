@@ -17,18 +17,23 @@ for i in range(1, n):
         #수열이 언제 시작하는지는 상관 없음. 언제 끝나는지가 중요함
         if arr[j] < arr[i]: #this is where update happens
             dp_increase[i] = [dp_increase[j][0]+1, dp_increase[j][1], i]
-            dpList1.append(dp_increase[i])
+            if not dp_increase[i] in dpList1:  
+                dpList1.append(dp_increase[i])
         else:
             dp_increase[i] = [1, i, i]
-            dpList1.append(dp_increase[i])
+            if not dp_increase[i] in dpList1:  
+                dpList1.append(dp_increase[i])
 
         #수열이 언제 끝나는지는 상관 없음. 언제 시작되는지가 중요함. 그런가?
         if arr[j] > arr[i]: #this is where update happens
             dp_decrease[i] = [dp_decrease[j][0]+1, dp_decrease[j][1], i]
-            dpList2.append(dp_decrease[i])
+            if not dp_decrease[i] in dpList2: 
+                dpList2.append(dp_decrease[i])
         else:
             dp_decrease[i] = [1, i, i]
             dpList2.append(dp_decrease[i])
+            if not dp_decrease[i] in dpList2: 
+                dpList2.append(dp_decrease[i])
 ans = []
 
 for i in range(len(dpList1)):
