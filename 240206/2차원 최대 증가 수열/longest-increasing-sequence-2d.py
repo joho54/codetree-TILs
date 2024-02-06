@@ -33,7 +33,7 @@ for i in range(1,n):
             for l in range(0, j):
                 if dp[k][l] == MIN_INT:
                     continue
-                if arr[i][j] > arr[k][l]:
+                if arr[i][j] > arr[k][l] and i >= k+1 and j >= l+1:
                     dp[i][j] = max(dp[i][j], dp[k][l]+1)
 
 ans = 0
@@ -41,3 +41,6 @@ for i in range(n):
     for j in range(m):
         ans = max(dp[i][j], ans)
 print(ans)
+
+# for e in dp:
+#     print(e)
