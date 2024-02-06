@@ -5,6 +5,7 @@ lines = [
     for _ in range(n)
 ]
 
+lines.sort()
 dp = [1 for _ in range(n)]
 
 dp[0] = 1
