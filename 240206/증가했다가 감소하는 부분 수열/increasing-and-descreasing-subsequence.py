@@ -9,7 +9,7 @@ dp_decrease = [0 for _ in range(n)]
 
 #setup: list, starting idx, ending idx
 dp_increase[0] = [1, 0, 0]
-dpList1, dpList2 = [[0, 1, 1]], [[0, 1, 1]]
+dpList1, dpList2 = [[1, 0, 0]], [[1, 0, 0]]
 dp_decrease[0] = [1, 0, 0]
 
 for i in range(1, n):
@@ -33,9 +33,10 @@ ans = []
 
 for i in range(len(dpList1)):
     for j in range(len(dpList2)):
-        if dpList1[i][2] <= dpList2[j][1]:
+        if dpList1[i][2] < dpList2[j][1]:
             ans.append(dpList1[i][0]+dpList2[j][0])     
-
+        elif dpList1[i][2] == dpList2[j][1]:
+            ans.append(dpList1[i][0]+dpList2[j][0]-1)
 # print(dpList1)
 # print(dpList2)
 
