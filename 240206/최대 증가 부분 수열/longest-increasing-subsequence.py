@@ -8,7 +8,7 @@ dp = [0 for _ in range(n)]
 dp[0] = 1
 
 for i in range(1, n):
-    tmp = []
+    tmp = [0]
     for j in range(i):
         if a[j] < a[i]:
             tmp.append(dp[j]+1)
