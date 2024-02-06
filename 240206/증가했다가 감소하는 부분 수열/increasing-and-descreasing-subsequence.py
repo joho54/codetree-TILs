@@ -31,11 +31,11 @@ for i in range(1, n):
                 dpList2.append(dp_decrease[i])
         else:
             dp_decrease[i] = [1, i, i]
-            dpList2.append(dp_decrease[i])
             if not dp_decrease[i] in dpList2: 
                 dpList2.append(dp_decrease[i])
 ans = []
 
+#O(n^2)
 for i in range(len(dpList1)):
     for j in range(len(dpList2)):
         if dpList1[i][2] < dpList2[j][1]:
