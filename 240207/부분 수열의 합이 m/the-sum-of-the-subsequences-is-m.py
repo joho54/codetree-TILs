@@ -14,7 +14,7 @@ dp = [MAX_INT for _ in range(m+1)]
 dp[0] = 0
 
 #initialize dp
-for i in range(1, n):  
+for i in range(0, n):  
     for j in range(m, -1, -1): 
         #same condition with finding max
         if j >= A[i]:
@@ -25,4 +25,5 @@ for i in range(1, n):
 ans = dp[m]
 if ans == MAX_INT:
     ans = -1
+
 print(ans)
