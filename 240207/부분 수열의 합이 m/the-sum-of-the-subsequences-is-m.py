@@ -17,7 +17,7 @@ dp[0] = 0
 for i in range(1, n):  
     for j in range(m, -1, -1): 
         #same condition with finding max
-        if j >= dp[j-A[i]]:
+        if j >= A[i]:
             if dp[j-A[i]] == MAX_INT:
                 continue
             dp[j] = min(dp[j], dp[j-A[i]]+1)
