@@ -23,8 +23,8 @@ for i in range(1, m+1):
             dp[i] = min(dp[i], dp[i-coins[j]]+1)
 
 ans = -1
-if dp[n-1] != MAX_INT:
-    ans = dp[n-1]
+if dp[m] != MAX_INT:
+    ans = dp[m]
 
 
 print(ans)
