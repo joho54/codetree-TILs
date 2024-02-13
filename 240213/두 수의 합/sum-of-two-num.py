@@ -6,10 +6,12 @@ arr = tuple(map(int ,input().split()))
 
 d = {}
 
+#
 for i, e in enumerate(arr):
     d[e] = i
 ans = 0 
 for i, e in enumerate(arr):
-    if (k-e) in d:
+    #현재 주목한 배열보다 뒤에 있는 값들만 고려하려면?
+    if (k-e) in d and i < d[k-e]:
         ans += 1
-print(ans//2)
+print(ans)
