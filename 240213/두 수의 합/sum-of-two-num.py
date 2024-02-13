@@ -1,17 +1,21 @@
-#input
-n, k = tuple(map(int ,input().split()))
-arr = tuple(map(int ,input().split()))
+# 변수 선언 및 입력:
+n, k = tuple(map(int, input().split()))
+arr = list(map(int, input().split()))
 
-#해쉬 맵으로 [k-현재 고른 숫자]를 찾으면 됨. 이 키가 있는지
+count = dict()
 
-d = {}
+ans = 0
+# 배열을 앞에서부터 순회하며 쌍을 만들어줍니다.
+for elem in arr:
+    diff = k - elem
+    # 가능한 모든 쌍의 수를 세어줍니다.
+    if diff in count:
+        ans += count[diff]
 
-#
-for i, e in enumerate(arr):
-    d[e] = i
-ans = 0 
-for i, e in enumerate(arr):
-    #현재 주목한 배열보다 뒤에 있는 값들만 고려하려면?
-    if (k-e) in d and i < d[k-e]:
-        ans += 1
+    # 현재 숫자의 개수를 하나 증가시켜줍니다.
+    if elem in count:
+        count[elem] += 1
+    else:
+        count[elem] = 1
+
 print(ans)
