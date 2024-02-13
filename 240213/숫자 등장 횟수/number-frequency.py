@@ -5,9 +5,15 @@ indices = tuple(map(int, input().split()))
 
 d = {}
 
+
+for i, enum in enumerate(arr):
+    if enum in d:
+        d[enum] += 1
+    else:
+        d[enum] = 1
+
 for idx in indices:
-    ans = 0
-    for i, enum in enumerate(arr):
-        if idx == enum:
-            ans += 1
-    print(ans, end = ' ')
+    if idx in d:
+        print(d[idx], end = ' ')
+    else:
+        print(0, end = ' ')
