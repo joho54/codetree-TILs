@@ -6,7 +6,7 @@ indices = tuple(map(int, input().split()))
 d = {}
 
 
-for i, enum in enumerate(arr):
+for enum in arr:
     if enum in d:
         d[enum] += 1
     else:
