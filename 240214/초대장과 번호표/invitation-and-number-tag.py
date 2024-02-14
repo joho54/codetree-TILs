@@ -9,7 +9,7 @@ invitedOnes.add(1)
 
 groupSorted = []
 
-for _ in range(3):
+for _ in range(30):
     for details in groups:
 
         groupList = []
