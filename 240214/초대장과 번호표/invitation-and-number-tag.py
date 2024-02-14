@@ -1,3 +1,6 @@
+from collections import deque
+q = deque()
+
 #input
 n, g = tuple(map(int, input().split()))
 groups = [
@@ -6,12 +9,12 @@ groups = [
 ]
 invitedOnes = set()
 invitedOnes.add(1)
-
+q.append(1)
 groupSorted = []
 
-for _ in range(300):
+while q:
+    _ = q.popleft()
     for details in groups:
-
         groupList = []
         groupSize = details[0]
         for i in range(1, groupSize+1):
@@ -28,7 +31,9 @@ for _ in range(300):
                 uninvited = g
                 # print('uninvited!!', uninvited)
         if invitedNums == groupSize-1:
+            q.append(uninvited)
             invitedOnes.add(uninvited)
+
             # print('so we invited', uninvited)
                 
 print(len(invitedOnes))
