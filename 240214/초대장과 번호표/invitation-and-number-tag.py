@@ -13,7 +13,7 @@ q.append(1)
 groupSorted = []
 
 while q:
-    _ = q.popleft()
+    q.clear()
     for details in groups:
         groupList = []
         groupSize = details[0]
