@@ -4,7 +4,7 @@ public class Main {
         int a, b, c;
         a = 5;
         b = 6;
-        c = 7
+        c = 7;
         int tmp;
         tmp = c;
         b = a;
