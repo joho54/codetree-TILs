@@ -4,7 +4,7 @@ public class Main {
         int a, b, c;
         a = 97;
         b = 13;
-        c = a-b
+        c = a-b;
         System.out.println(a + " - " + b + " = " + c);
     }
 }
