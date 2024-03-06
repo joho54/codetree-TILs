@@ -6,6 +6,6 @@ public class Main {
         b = 2;
         c = 3;
         a = b =c
-        System.out.println(a + " " + b + " " + c)
+        System.out.println(a + " " + b + " " + c);
     }
 }
