@@ -6,10 +6,10 @@ public class Main {
         b = 6;
         c = 7
         int tmp;
-        tmp = a;
-        a = b;
-        b = c;
-        c = tmp;
+        tmp = c;
+        b = a;
+        c = b;
+        a = tmp;
         System.out.println(a);
         System.out.println(b);
         System.out.println(c);
