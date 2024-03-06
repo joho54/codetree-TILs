@@ -7,6 +7,6 @@ public class Main {
         a = 13;
         b = 0.165;
         c = a*b;
-        System.out.printf("%d * %d = %.4f", a, b, c);
+        System.out.printf("%d * %f = %.4f", a, b, c);
     }
 }
