@@ -7,6 +7,7 @@ public class Main {
         int a = sc.nextInt();
         int b = sc.nextInt();
         System.out.printf("%d * %d = %d", a, b, a*b);
+        System.out.println("");
         System.out.printf("%d / %d = %d", a, b, a/b);
     }
 }
