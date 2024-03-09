@@ -19,10 +19,13 @@ public class Main {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
         String str = sc.next();
-        System.out.println(str);
         char[] charArray = str.toCharArray();
         boolean isPelindrome = checkPelindrom(charArray);
-        System.out.println(isPelindrome);
+        if (isPelindrome) 
+            System.out.println("Yes");
+        else
+            System.out.println("No");
+
         
     }
 }
