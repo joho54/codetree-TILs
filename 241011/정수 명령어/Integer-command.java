@@ -35,20 +35,22 @@ public class Main {
                     // remove max
                     if(!s.isEmpty()){
                         if (flag == 1){
-                            s.remove(s.last());
+                            int max = s.last();
+                            s.remove(max);
                         }
                         // remove min
                         else {
-                            s.remove(s.first());
+                            int min = s.first();
+                            s.remove(min);
 
                         }
                     }
                 }
             }
+
             if(s.isEmpty()) System.out.println("EMPTY");
             else{ 
-                s.descendingSet().forEach(number -> System.out.print(number + " "));
-                System.out.println();
+                System.out.println(s.last() + " " + s.first());
             }
 
         }
