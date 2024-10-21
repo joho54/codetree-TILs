@@ -37,16 +37,12 @@ public class Main {
                 else if (arr[mid] > ans){
                     right = mid - 1;
                 }
-
-                // we so sure when the pointer wraps here
+                // we so sure there's no ans when the pointer wraps here
                 if (left > right){
                     System.out.println(-1);
                     break;
-                }
-                
+                }   
             }
-
-
         }
     }
 }
