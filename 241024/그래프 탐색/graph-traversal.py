@@ -21,4 +21,4 @@ def dfs(vertex):
 
 dfs(1)
 
-print(sum(visited) if sum(visited) > 0 else 0)
+print(sum(visited)-1 if sum(visited)-1 >= 0 else 0)
