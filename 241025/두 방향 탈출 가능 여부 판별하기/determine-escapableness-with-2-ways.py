@@ -21,7 +21,7 @@ def dfs(x, y):
     global flag
     if (x, y) == (n-1, m-1): 
         flag = True
-        print("we got it")
+        # print("we got it")
         return
     # base condition? no new x, y
     no_visit = True
