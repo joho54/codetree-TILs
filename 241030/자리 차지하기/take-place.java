@@ -19,14 +19,14 @@ public class Main {
             // 1. 규칙이 작은 사람을 먼저 꺼낸다.
             // 2. 규칙이 작은 사람이 앉을 수 있는 최대한 작은 자리에 앉힌다.
         }
-        int seat_cnt = 1;
+        int seat_cnt = 0;
         for(int a_i: s){
             
             if (seat_cnt > a_i) break;
             // seats[seat_cnt] = 1; // mark the seat.
             seat_cnt += 1;
         }
-        System.out.println(seat_cnt-1);
+        System.out.println(seat_cnt);
 
     }
 }
