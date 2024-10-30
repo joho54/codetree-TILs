@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Main {
 
     public static TreeSet<Integer> s = new TreeSet<>();
+    public static TreeSet<Integer> seats = new TreeSet<>();
     public static Scanner sc = new Scanner(System.in);
     public static int n = sc.nextInt();
     public static int m = sc.nextInt();
@@ -24,7 +25,17 @@ public class Main {
             
             if (seat_cnt > a_i) break;
             // seats[seat_cnt] = 1; // mark the seat.
-            seat_cnt += 1;
+            // queries 만들어서 값들을 순서대로 보면서 lower가 나랑 같으면 브레이크?
+
+            if(seats.lower(a_i) != null){
+                if(seats.lower(a_i) == a_i) break;
+                }
+            
+            seat_cnt += 1; // 계산 자체는 맞는데.
+            // seat treeset을 따로 만들어서 거기에다 a_i를 순서대로 집어넣고, 
+            // queries를 따로 순서대로 돌면서 아니아니
+            // 여기서 집어넣기 전에 a_i에 대해 lower 돌리고, 같으면 브레이크 걸면 되지..
+            seats.add(a_i);
         }
         System.out.println(seat_cnt);
 
