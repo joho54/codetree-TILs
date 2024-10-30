@@ -8,7 +8,7 @@ public class Main {
         TreeSet<Integer> s = new TreeSet<>();
         s.add(0);
         int n = sc.nextInt();
-        int ans = 100000;
+        int ans = Integer.MAX_VALUE;
         for(int i = 0; i < n; i++){
             
             int val = sc.nextInt();
