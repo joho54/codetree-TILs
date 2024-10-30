@@ -22,7 +22,7 @@ public class Main {
         int seat_cnt = 0;
         for(int a_i: a){
             
-            if (seat_cnt > a_i) break;
+            // if (seat_cnt > a_i) break;
             // seats[seat_cnt] = 1; // mark the seat.
             // queries 만들어서 값들을 순서대로 보면서 lower가 나랑 같으면 브레이크?
 
