@@ -8,19 +8,27 @@ public class Main {
         TreeSet<Integer> s = new TreeSet<>();
         s.add(0);
         int n = sc.nextInt();
+        int ans = 100000;
         for(int i = 0; i < n; i++){
-            s.add(sc.nextInt());
-            int ans = 10000000;
-            Iterator iter = s.iterator();
-            while (iter.hasNext()){
-                int val = (int)iter.next();
-                Integer h = s.higher(val);
-                if (h != null)
-                {
-                    int sub = h-val;
-                    if (sub < ans) ans = sub;
-                }
+            
+            int val = sc.nextInt();
+            
+            s.add(val);
+
+            Integer higher = s.higher(val);
+            Integer lower = s.lower(val);
+            
+            // update ans
+            if (higher != null) {
+                int sub1 = higher - val;
+                if (sub1 < ans) ans = sub1;
             }
+                
+            if (lower != null) {
+                int sub2 = val - lower;
+                if (sub2 < ans) ans = sub2;
+            }
+
             System.out.println(ans);
         }
 
