@@ -36,7 +36,7 @@ MAX_INT = 100000
 n = int(input())
 ans = MAX_INT # 왜 max_int로 초기화해도 괜찮은 거지? tmp는 이것보단 무조건 작을 테니까?
 
-for i in range((MAX_INT+1)//5 + 1): #왜 max_int + 1 인거지? i가 그만큼 커질 필요가 있나?
+for i in range((MAX_INT+1)//5): #왜 max_int + 1 인거지? i가 그만큼 커질 필요가 있나?
     k = n - 5 * i 
     if k >= 0:
         if k%2 == 0:
