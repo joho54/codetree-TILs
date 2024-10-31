@@ -41,7 +41,7 @@ for i in range(MAX_INT): #왜 max_int인거지?
     if k > 0:
         if k%2 == 0:
             tmp = i + k//2
-            ans = min(tmp, MAX_INT)
+            ans = min(tmp, ans)
 
 ans = ans if ans != MAX_INT else -1
 print(ans)
