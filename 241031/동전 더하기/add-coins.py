@@ -9,8 +9,11 @@ for i in range(n):
 cnt = 0 # increment. 
 
 for coin in coins[-1::-1]:  # 각각 큰 동전에 대해 루프를 거꾸로
-    while k - coin >= 0:
-        k -= coin
-        cnt += 1
+    # this is not good
+    # while k - coin >= 0:
+    #     k -= coin
+    #     cnt += 1 
+    cnt = cnt + k // coin
+    k = k % coin
 
 print(cnt)
