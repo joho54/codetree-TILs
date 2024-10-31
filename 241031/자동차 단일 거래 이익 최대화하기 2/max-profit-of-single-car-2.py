@@ -42,6 +42,6 @@ for i in range(1, n):
     if arr[i] < min_price:
         min_price = arr[i]
 
-profit = profit if profit > 0 else 0
+ans = max_profit if max_profit > 0 else 0
 
-print(profit)
+print(ans)
