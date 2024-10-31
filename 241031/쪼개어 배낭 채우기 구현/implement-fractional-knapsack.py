@@ -6,7 +6,7 @@ jewls = [
     for _ in range(n)
 ]
 
-jewls = sorted(jewls, key = lambda x: x[0]/x[1]) # order by reversed value
+jewls = sorted(jewls, key = lambda x: -x[1]/x[0]) 
 
 weight_val = [(w, v/w) for w, v in jewls]
 # print(weight_val)
