@@ -10,7 +10,7 @@ for a in arr:
     if ans+a > 0:
         ans += a
     else: 
-        ans = 0
+        ans = a
     final_ans = max(ans, final_ans)
 
 print(final_ans)
