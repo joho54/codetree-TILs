@@ -4,7 +4,7 @@
 n = int(input())
 arr = tuple(map(int, input().split()))
 ans = 0
-final_ans = 0
+final_ans = arr[0]
 
 for a in arr:
     if ans+a > 0:
