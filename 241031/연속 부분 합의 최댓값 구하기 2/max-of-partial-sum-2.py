@@ -7,7 +7,7 @@ ans = 0
 final_ans = arr[0]
 
 for a in arr:
-    if ans+a > 0:
+    if ans+a >= 0:
         ans += a
     else: 
         ans = a
