@@ -3,14 +3,14 @@
 # 입력
 n = int(input())
 arr = tuple(map(int, input().split()))
-ans = 0
+ans = arr[0]
 final_ans = arr[0]
 
-for a in arr:
+for a in arr[1:]:
     if ans+a >= 0:
         ans += a
     else: 
-        ans = a
+        ans = 0
     final_ans = max(ans, final_ans)
 
 print(final_ans)
