@@ -1,21 +1,47 @@
-# 변수 선언 및 입력:
+# n = int(input())
+# arr = tuple(map(int, input().split()))
+
+# pre_sub = []
+
+# for i in range(1, n):
+#     pre_sub.append(arr[i] - arr[i-1])
+
+# # print(pre_sub)
+
+# ans = pre_sub[0]
+# fin = pre_sub[0]
+
+# for elem in pre_sub[1:]:
+#     if ans < 0:
+#         ans = elem
+#     else:
+#         ans += elem
+#     fin = max(ans, fin)
+#     # print(ans)
+
+# fin = fin if fin > 0 else 0
+
+# print(fin)
+
+# inplace한 방식으로 바꿔 풀어봐라.
+
 n = int(input())
-price = list(map(int, input().split()))
+arr = tuple(map(int, input().split()))
 
-# 배열을 앞에서부터 순회하며 최소값을 갱신해줍니다.
-# 각 원소에 대하여 해당 시점의 최소값과의 차이가
-# 최대가 될 때를 갱신해줍니다.
 max_profit = 0
-min_price = price[0]
-for i in range(n):
-    profit = price[i] - min_price
+min_price = arr[0]
 
-    # 답을 갱신해줍니다.
+for i in range(1, n):
+    # updpate profit
+    profit = arr[i] - min_price
+
     if profit > max_profit:
         max_profit = profit
-
-    # 지금까지의 최솟값을 갱신해줍니다.
-    if min_price > price[i]:
-        min_price = price[i]
     
+    # update min price
+    if arr[i] < min_price:
+        min_price = arr[i]
+
+# ans = max_profit if max_profit > 0 else 0
+
 print(max_profit)
