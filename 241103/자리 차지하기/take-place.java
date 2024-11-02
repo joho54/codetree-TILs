@@ -17,19 +17,11 @@ public class Main {
         }
 
         for(int a_i: a){
-            if(e.contains(a_i)) {
-                e.remove(a_i);
-                }
-            else 
-            {
-                if(e.lower(a_i) != null){
-                    int tmp = e.lower(a_i);
-                    e.remove(tmp);
-                }
-                else{
-                    break;
-                }
-
+            if(e.floor(a_i) != null) {
+                e.remove(e.floor(a_i));
+            }
+            else{
+                break;
             }
         }
         System.out.println(m-e.size());
