@@ -47,7 +47,8 @@ public class Main {
                 // i=6. 1 2 3 4 5 6 
                 else{
                     // 종료 조건임.
-                    System.out.println("no seat" + a_i);
+                    // System.out.println("no seat" + a_i);
+                    break;
                 }
 
             }
