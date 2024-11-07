@@ -46,24 +46,22 @@ public class Main {
 
     public static Scanner sc = new Scanner(System.in);
     public static TreeSet<Range> s = new TreeSet<>();
+    public static TreeSet<Integer> search_s = new TreeSet();
     public static void main(String[] args) {
         int n = sc.nextInt();
         int m = sc.nextInt();
         s.add(new Range(0, n));
+        search_s.add(-1);
+        search_s.add(n+1);
         for(int j = 0 ; j < m; j++){
             int del_num = sc.nextInt();
-            // we suppose del_num is always targeting head
-            // if m is amoung head this is ok. but if not?
-            Range head = s.first();// while?
-            while(head.start_num > del_num || head.end_num < del_num){
-                head = s.higher(head);
-                // System.out.println("where are you~");
-            }
-            s.remove(head);
-            Range r1 = new Range(head.start_num, del_num-1);
-            Range r2 = new Range(del_num+1, head.end_num);
+            search_s.add(del_num);
+            Range target = new Range(search_s.lower(del_num)+1, search_s.higher(del_num)-1);
+            Range r1 = new Range(target.start_num, del_num-1);
+            Range r2 = new Range(del_num+1, target.end_num);
             s.add(r1);
             s.add(r2);
+            s.remove(target);
             System.out.println(s.first().range_size);
         }
     }
