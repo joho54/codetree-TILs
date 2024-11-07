@@ -39,10 +39,10 @@ public class Main {
             int P = sc.nextInt();
             int L = sc.nextInt();//level
             s.add(new Pro(P, L));
-        }
+        } //? we have a pro in sc.
         int m = sc.nextInt();
-        for(int i = 0; i < n; i++){
-            String o = sc.next();
+        for(int i = 0; i < m; i++){
+            String o = sc.next(); 
             if(o.equals("ad")){
                 // add pro
                 int P = sc.nextInt();
