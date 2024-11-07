@@ -37,7 +37,7 @@ class Range implements Comparable<Range>{
     @Override
     public int compareTo(Range range){
         if(this.range_size != range.range_size) return range.range_size - this.range_size; // reversed order
-        else return 0;
+        else return this.start_num - range.start_num;
     }
 
 }
