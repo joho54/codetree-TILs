@@ -73,3 +73,6 @@ public class Main {
         }
     }
 }
+
+// i misstyped indices twice. i couldn't find it if there was no gpt.
+// use meaningful index names. not i, j, but like initial-orders, secondary-orders
