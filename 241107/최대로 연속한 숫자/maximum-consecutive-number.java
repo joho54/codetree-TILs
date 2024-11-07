@@ -50,7 +50,6 @@ public class Main {
                 int tmp4 = 0;
                 Integer sibal = s.lower(left);
                 if(sibal != null) tmp3 = left - sibal - 1;
-                else tmp3 = 0;
                 
                 // higher of left is del num
                 tmp4 = del_num - left - 1 ;
@@ -66,7 +65,6 @@ public class Main {
                 tmp5 = right - del_num - 1;
                 Integer sibal2 = s.higher(right);
                 if (sibal2 != null) tmp6 = sibal2 - right - 1 ;
-                else tmp6 = 0;
                 right = Math.max(tmp5, tmp6);
             }
             else right = 0;
