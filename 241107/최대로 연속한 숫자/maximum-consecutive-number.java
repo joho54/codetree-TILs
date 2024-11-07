@@ -32,30 +32,24 @@ public class Main {
     public static void main(String[] args) {
         int n = sc.nextInt();
         int m = sc.nextInt();
-        // jjjjjjjjj, mmmmmm
-        s.add(n+1); // for initiation
-        for(int j = 0 ; j < m; j++){
+        s.add(n+1);
+        s.add(-1);
+        int ans = -1;// where should i init backup?
+        int backup = -1;
+        for(int j = 0 ; j < m; j++){ // what? /
             int del_num = sc.nextInt();
             s.add(del_num);
-            int largest = n;
-            int samllest = -1;
-            int curr_num = samllest;// should be up in while
-            int next_num = s.higher(curr_num); // should be updated in wihle
-            int last_del = s.last();
-            int ans = -1;
-            for(int ptr: s){
-                // ptr is next
-                next_num = ptr;
-                // compare
-                int tmp = next_num - (curr_num+1);
-                // what happens here?
-                // System.out.println(next_num + " " + curr_num+1);
-                // 0 1 2 3 4 5 6 7 8 
-                ans = Math.max(ans, tmp);
-                // update curr_num
-                curr_num = ptr;
-            }
-            System.out.println(ans);
+            // compoare
+            int tmp1 = del_num - s.lower(del_num) - 1;
+            int tmp2 = s.higher(del_num) - del_num - 1 ;
+            // 0 1 2 3 4 5 6 7 8
+            // 0 1 2   4 5 6 7 8 
+            // 0 1 2   4 5   7 8
+            int tmp = Math.max(tmp1, tmp2); // first compare occurs here
+            tmp = Math.max(tmp, backup);
+            System.out.println(tmp);
+
+            backup = Math.min(tmp1, tmp2);
         }
 
     }
